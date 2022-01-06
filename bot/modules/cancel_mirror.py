@@ -44,7 +44,7 @@ def cancel_mirror(update, context):
     if dl.status() == MirrorStatus.STATUS_ARCHIVING:
         sendMessage("𝐀𝐫𝐜𝐡𝐢𝐯𝐚𝐥 𝐢𝐧 𝐏𝐫𝐨𝐠𝐫𝐞𝐬𝐬, 𝐘𝐨𝐮 𝐂𝐚𝐧'𝐭 𝐂𝐚𝐧𝐜𝐞𝐥 𝐈𝐭.", context.bot, update)
     elif dl.status() == MirrorStatus.STATUS_EXTRACTING:
-        sendMessage("𝐄𝐱𝐭𝐫𝐚𝐜𝐭 𝐢𝐧 𝐏𝐫𝐨𝐠𝐫𝐞𝐬𝐬, 𝐘𝐨𝐮 𝐂𝐚𝐧'𝐭 𝐂𝐚𝐧𝐜𝐞𝐥 𝐈𝐭."", context.bot, update)
+        sendMessage("𝐄𝐱𝐭𝐫𝐚𝐜𝐭 𝐢𝐧 𝐏𝐫𝐨𝐠𝐫𝐞𝐬𝐬, 𝐘𝐨𝐮 𝐂𝐚𝐧'𝐭 𝐂𝐚𝐧𝐜𝐞𝐥 𝐈𝐭.", context.bot, update)
     elif dl.status() == MirrorStatus.STATUS_SPLITTING:
         sendMessage("Split in Progress, You Can't Cancel It.", context.bot, update)
     else:
