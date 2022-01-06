@@ -23,13 +23,13 @@ PAGE_NO = 1
 class MirrorStatus:
     STATUS_UPLOADING = "𝕌𝕡𝕝𝕠𝕒𝕕𝕚𝕟𝕘[--⤴️"
     STATUS_DOWNLOADING = "𝔻𝕠𝕨𝕟𝕝𝕠𝕒𝕕𝕚𝕟𝕘[--⤵️"
-    STATUS_CLONING = "Cloning...♻️"
-    STATUS_WAITING = "Queued...📝"
-    STATUS_FAILED = "Failed 🚫. Cleaning Download..."
-    STATUS_PAUSE = "Paused...⭕️"
-    STATUS_ARCHIVING = "Archiving...🔐"
-    STATUS_EXTRACTING = "Extracting...📂"
-    STATUS_SPLITTING = "Splitting...✂️"
+    STATUS_CLONING = "ℂ𝕝𝕠𝕟𝕚𝕟𝕘[--☯️"
+    STATUS_WAITING = "ℚ𝕦𝕖𝕦𝕖𝕕[--📜"
+    STATUS_FAILED = "𝔽𝕒𝕚𝕝𝕖𝕕[--❌ ℂ𝕝𝕖𝕒𝕟𝕚𝕟𝕘 𝔻𝕠𝕨𝕟𝕝𝕠𝕒𝕕[--🔶🔸"
+    STATUS_PAUSE = "ℙ𝕒𝕦𝕤𝕖𝕕[--⏸️"
+    STATUS_ARCHIVING = "𝔸𝕣𝕔𝕙𝕚𝕧𝕚𝕟𝕘[--🧿"
+    STATUS_EXTRACTING = "𝔼𝕩𝕥𝕣𝕒𝕔𝕥𝕚𝕟𝕘[--🗃️"
+    STATUS_SPLITTING = "𝕊𝕡𝕝𝕚𝕥𝕥𝕚𝕟𝕘[--🔛"
 
 
 PROGRESS_MAX_SIZE = 100 // 8
@@ -110,7 +110,7 @@ def get_progress_bar_string(status):
     cPart = p % 8 - 1
     p_str = '■' * cFull
     p_str += '□' * (12 - cFull)
-    p_str = f"[{p_str}]"
+    p_str = f"[--{p_str}--]"
     return p_str
 
 
@@ -127,40 +127,40 @@ def get_readable_message():
                 globals()['PAGE_NO'] -= 1
             start = COUNT
         for index, download in enumerate(list(download_dict.values())[start:], start=1):
-            msg += f"<b>Filename:</b> <code>{download.name()}</code>"
-            msg += f"\n<b>Status:</b> <i>{download.status()}</i>"
+            msg += f"<b>╭─🗂️ ꜰɪʟᴇɴᴀᴍᴇ :</b> <code>{download.name()}</code>"
+            msg += f"\n<b>├─ℹ️ ꜱᴛᴀᴛᴜꜱ :</b> <i>{download.status()}</i>"
             if download.status() not in [
                 MirrorStatus.STATUS_ARCHIVING,
                 MirrorStatus.STATUS_EXTRACTING,
                 MirrorStatus.STATUS_SPLITTING,
             ]:
-                msg += f"\n<code>{get_progress_bar_string(download)} {download.progress()}</code>"
+                msg += f"\n<b>├─</b><code>{get_progress_bar_string(download)} {download.progress()}</code>"
                 if download.status() == MirrorStatus.STATUS_CLONING:
-                    msg += f"\n<b>Cloned:</b> <code>{get_readable_file_size(download.processed_bytes())}</code> of <code>{download.size()}</code>"
+                    msg += f"\n<b>├─☯️ ᴄʟᴏɴᴇᴅ :</b> <code>{get_readable_file_size(download.processed_bytes())}</code> of <code>{download.size()}</code>"
                 elif download.status() == MirrorStatus.STATUS_UPLOADING:
-                    msg += f"\n<b>Uploaded:</b> <code>{get_readable_file_size(download.processed_bytes())}</code> of <code>{download.size()}</code>"
+                    msg += f"\n<b>├─📤 ᴜᴘʟᴏᴀᴅᴇᴅ :</b> <code>{get_readable_file_size(download.processed_bytes())}</code> of <code>{download.size()}</code>"
                 else:
-                    msg += f"\n<b>Downloaded:</b> <code>{get_readable_file_size(download.processed_bytes())}</code> of <code>{download.size()}</code>"
-                msg += f"\n<b>Speed:</b> <code>{download.speed()}</code> <b>ETA:</b> <code>{download.eta()}</code>"
+                    msg += f"\n<b>├─📥 ᴅᴏᴡɴʟᴏᴀᴅᴇᴅ :</b> <code>{get_readable_file_size(download.processed_bytes())}</code> of <code>{download.size()}</code>"
+                msg += f"\n<b>├─📨 ꜱᴘᴇᴇᴅ :</b> <code>{download.speed()}</code> <b>ETA:</b> <code>{download.eta()}</code>"
                 try:
-                    msg += f"\n<b>Seeders:</b> <code>{download.aria_download().num_seeders}</code>" \
-                           f" | <b>Peers:</b> <code>{download.aria_download().connections}</code>"
+                    msg += f"\n<b>├─↗️ ꜱᴇᴇᴅᴇʀꜱ :</b> <code>{download.aria_download().num_seeders}</code>" \
+                           f" | <b>├─↙️ ᴘᴇᴇʀꜱ :</b> <code>{download.aria_download().connections}</code>"
                 except:
                     pass
                 try:
-                    msg += f"\n<b>Seeders:</b> <code>{download.torrent_info().num_seeds}</code>" \
-                           f" | <b>Leechers:</b> <code>{download.torrent_info().num_leechs}</code>"
+                    msg += f"\n<b>├─↗️ ꜱᴇᴇᴅᴇʀꜱ :</b> <code>{download.torrent_info().num_seeds}</code>" \
+                           f" | <b>🧲 ʟᴇᴇᴄʜᴇʀꜱ :</b> <code>{download.torrent_info().num_leechs}</code>"
                 except:
                     pass
-                msg += f"\n<b>To Cancel:</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
+                msg += f"\n<b>╰─⛔ ꜱᴛᴏᴘ :</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
             msg += "\n\n"
             if STATUS_LIMIT is not None and index == STATUS_LIMIT:
                 break
         if STATUS_LIMIT is not None and dick_no > STATUS_LIMIT:
             msg += f"<b>Page:</b> <code>{PAGE_NO}</code>/<code>{pages}</code> | <b>Tasks:</b> <code>{dick_no}</code>\n"
             buttons = button_build.ButtonMaker()
-            buttons.sbutton("Previous", "pre")
-            buttons.sbutton("Next", "nex")
+            buttons.sbutton("⏮️", "pre")
+            buttons.sbutton("⏭️", "nex")
             button = InlineKeyboardMarkup(buttons.build_menu(2))
             return msg, button
         return msg, ""
