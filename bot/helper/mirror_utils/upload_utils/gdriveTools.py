@@ -742,9 +742,9 @@ class GoogleDriveHelper:
                     msg += f",🗂️ <code>{file.get('name')}<br>(folder)</code><br>"
                     if SHORTENER is not None and SHORTENER_API is not None:
                         sfurl = short_url(furl)
-                        msg += f"<b><a href={sfurl}>♻️ 𝔻𝕣𝕚𝕧𝕖 𝕃𝕚𝕟𝕜 ♻️"</a></b>"
+                        msg += f"<b><a href={sfurl}>♻️ 𝔻𝕣𝕚𝕧𝕖 𝕃𝕚𝕟𝕜 ♻️</a></b>"
                     else:
-                        msg += f"<b><a href={furl}>♻️ 𝔻𝕣𝕚𝕧𝕖 𝕃𝕚𝕟𝕜 ♻️"</a></b>"
+                        msg += f"<b><a href={furl}>♻️ 𝔻𝕣𝕚𝕧𝕖 𝕃𝕚𝕟𝕜 ♻️</a></b>"
                     if INDEX_URLS[index] is not None:
                         if RECURSIVE_SEARCH:
                             url_path = "/".join([requests.utils.quote(n, safe='') for n in self.get_recursive_list(file, parent_id)])
