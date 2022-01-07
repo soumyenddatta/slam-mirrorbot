@@ -250,7 +250,7 @@ class MirrorListener(listeners.MirrorListeners):
                 msg += f'\n<b>├─📚 ꜱᴜʙꜰᴏʟᴅᴇʀꜱ : </b><code>{folders}</code>'
                 msg += f'\n<b>╰─🗃️ ꜰɪʟᴇꜱ : </b><code>{files}</code>'
             else:
-                msg += f'\n<b>├─⚙️ ᴛʏᴘᴇ : </b><code>{typ}</code>'
+                msg += f'\n<b>╰─⚙️ ᴛʏᴘᴇ : </b><code>{typ}</code>'
             buttons = button_build.ButtonMaker()
             if SHORTENER is not None and SHORTENER_API is not None:
                 surl = short_url(link)
