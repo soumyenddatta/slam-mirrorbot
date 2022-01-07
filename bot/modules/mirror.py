@@ -169,7 +169,7 @@ class MirrorListener(listeners.MirrorListeners):
             update_all_messages()
             tg.upload()
         else:
-            LOGGER.info(f"𝐔𝐩𝐥𝐨𝐚𝐝 𝐍𝐚𝐦𝐞: {up_name}")
+            LOGGER.info(f"Upload Name: {up_name}")
             drive = gdriveTools.GoogleDriveHelper(up_name, self)
             upload_status = UploadStatus(drive, size, gid, self)
             with download_dict_lock:
@@ -192,7 +192,7 @@ class MirrorListener(listeners.MirrorListeners):
             uname = f"@{self.message.from_user.username}"
         else:
             uname = f'<a href="tg://user?id={self.message.from_user.id}">{self.message.from_user.first_name}</a>'
-        msg = f"{uname} 𝐲𝐨𝐮𝐫 𝐝𝐨𝐰𝐧𝐥𝐨𝐚𝐝 𝐡𝐚𝐬 𝐛𝐞𝐞𝐧 𝐬𝐭𝐨𝐩𝐩𝐞𝐝 𝐝𝐮𝐞 𝐭𝐨:{error}"
+        msg = f"{uname} your download has been stopped due to: {error}"
         sendMessage(msg, self.bot, self.update)
         if count == 0:
             self.clean()
@@ -244,19 +244,19 @@ class MirrorListener(listeners.MirrorListeners):
                 update_all_messages()
             return
         with download_dict_lock:
-            msg = f'<b>╭─🗂️ ꜰɪʟᴇɴᴀᴍᴇ : </b><code>{download_dict[self.uid].name()}</code>\n<b>Size: </b><code>{size}</code>'
+            msg = f'<b>Filename: </b><code>{download_dict[self.uid].name()}</code>\n<b>Size: </b><code>{size}</code>'
             if os.path.isdir(f'{DOWNLOAD_DIR}/{self.uid}/{download_dict[self.uid].name()}'):
-                msg += '\n<b>├─⚙️ ᴛʏᴘᴇ : </b><code>Folder</code>'
-                msg += f'\n<b>├─📚 ꜱᴜʙꜰᴏʟᴅᴇʀꜱ : </b><code>{folders}</code>'
-                msg += f'\n<b├─🗃️ ꜰɪʟᴇꜱ :" </b><code>{files}</code>'
+                msg += '\n<b>Type: </b><code>Folder</code>'
+                msg += f'\n<b>SubFolders: </b><code>{folders}</code>'
+                msg += f'\n<b>Files: </b><code>{files}</code>'
             else:
-                msg += f'\n<b>╰─⚙️ ᴛʏᴘᴇ : </b><code>{typ}</code>'
+                msg += f'\n<b>Type: </b><code>{typ}</code>'
             buttons = button_build.ButtonMaker()
             if SHORTENER is not None and SHORTENER_API is not None:
                 surl = short_url(link)
-                buttons.buildbutton("♻️ 𝔻𝕣𝕚𝕧𝕖 𝕃𝕚𝕟𝕜 ♻️", surl)
+                buttons.buildbutton("☁️ Drive Link", surl)
             else:
-                buttons.buildbutton("♻️ 𝔻𝕣𝕚𝕧𝕖 𝕃𝕚𝕟𝕜 ♻️", link)
+                buttons.buildbutton("☁️ Drive Link", link)
             LOGGER.info(f'Done Uploading {download_dict[self.uid].name()}')
             if INDEX_URL is not None:
                 url_path = requests.utils.quote(f'{download_dict[self.uid].name()}')
@@ -265,21 +265,21 @@ class MirrorListener(listeners.MirrorListeners):
                     share_url += '/'
                     if SHORTENER is not None and SHORTENER_API is not None:
                         siurl = short_url(share_url)
-                        buttons.buildbutton("🧾 𝕀𝕟𝕕𝕖𝕩 𝕃𝕚𝕟𝕜 🧾", siurl)
+                        buttons.buildbutton("⚡ Index Link", siurl)
                     else:
-                        buttons.buildbutton("🧾 𝕀𝕟𝕕𝕖𝕩 𝕃𝕚𝕟𝕜 🧾", share_url)
+                        buttons.buildbutton("⚡ Index Link", share_url)
                 else:
                     share_urls = f'{INDEX_URL}/{url_path}?a=view'
                     if SHORTENER is not None and SHORTENER_API is not None:
                         siurl = short_url(share_url)
-                        buttons.buildbutton("🧾 𝕀𝕟𝕕𝕖𝕩 𝕃𝕚𝕟𝕜 🧾", siurl)
+                        buttons.buildbutton("⚡ Index Link", siurl)
                         if VIEW_LINK:
                             siurls = short_url(share_urls)
-                            buttons.buildbutton("👀 𝕍𝕚𝕖𝕨 𝕃𝕚𝕟𝕜 👀", siurls)
+                            buttons.buildbutton("🌐 View Link", siurls)
                     else:
-                        buttons.buildbutton("🧾 𝕀𝕟𝕕𝕖𝕩 𝕃𝕚𝕟𝕜 🧾", share_url)
+                        buttons.buildbutton("⚡ Index Link", share_url)
                         if VIEW_LINK:
-                            buttons.buildbutton("👀 𝕍𝕚𝕖𝕨 𝕃𝕚𝕟𝕜 👀", share_urls)
+                            buttons.buildbutton("🌐 View Link", share_urls)
             if BUTTON_FOUR_NAME is not None and BUTTON_FOUR_URL is not None:
                 buttons.buildbutton(f"{BUTTON_FOUR_NAME}", f"{BUTTON_FOUR_URL}")
             if BUTTON_FIVE_NAME is not None and BUTTON_FIVE_URL is not None:
