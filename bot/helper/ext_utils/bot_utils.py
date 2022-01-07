@@ -144,12 +144,12 @@ def get_readable_message():
                 msg += f"\n<b>├─📨 ꜱᴘᴇᴇᴅ :</b> <code>{download.speed()}</code> <b>ETA:</b> <code>{download.eta()}</code>"
                 try:
                     msg += f"\n<b>├─↗️ ꜱᴇᴇᴅᴇʀꜱ :</b> <code>{download.aria_download().num_seeders}</code>" \
-                           f" | <b>├─↙️ ᴘᴇᴇʀꜱ :</b> <code>{download.aria_download().connections}</code>"
+                           f" | <b>↙️ ᴘᴇᴇʀꜱ :</b> <code>{download.aria_download().connections}</code>"
                 except:
                     pass
                 try:
                     msg += f"\n<b>├─↗️ ꜱᴇᴇᴅᴇʀꜱ :</b> <code>{download.torrent_info().num_seeds}</code>" \
-                           f" | <b>🧲 ʟᴇᴇᴄʜᴇʀꜱ :</b> <code>{download.torrent_info().num_leechs}</code>"
+                           f" | <b>↙️ ʟᴇᴇᴄʜᴇʀꜱ :</b> <code>{download.torrent_info().num_leechs}</code>"
                 except:
                     pass
                 msg += f"\n<b>╰─⛔ ꜱᴛᴏᴘ :</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
