@@ -108,9 +108,9 @@ def get_progress_bar_string(status):
     p = min(max(p, 0), 100)
     cFull = p // 8
     cPart = p % 8 - 1
-    p_str = '🟢' * cFull
-    p_str += '⚫' * (12 - cFull)
-    p_str = f"[×_0]-{p_str}-[0_×]"
+    p_str = '🔶' * cFull
+    p_str += '🔷' * (12 - cFull)
+    p_str = f"[^-{p_str}-^]"
     return p_str
 
 
@@ -134,7 +134,7 @@ def get_readable_message():
                 MirrorStatus.STATUS_EXTRACTING,
                 MirrorStatus.STATUS_SPLITTING,
             ]:
-                msg += f"\n<b>├─</b><code>{get_progress_bar_string(download)} {download.progress()}</code>"
+                msg += f"\n<b>├─🔄</b><code>{get_progress_bar_string(download)} {download.progress()}</code>"
                 if download.status() == MirrorStatus.STATUS_CLONING:
                     msg += f"\n<b>├─☯️ ᴄʟᴏɴᴇᴅ :</b> <code>{get_readable_file_size(download.processed_bytes())}</code> of <code>{download.size()}</code>"
                 elif download.status() == MirrorStatus.STATUS_UPLOADING:
