@@ -318,14 +318,14 @@ RESULT_STR_ALL = (
 TORRENT_API = 'https://api.linkstore.eu.org/api'
 
 torrents_dict = {
-    '1337x': {'source': f"{TORRENT_API}/1337x/", 'result_str': RESULT_STR_1337},
-    'piratebay': {'source': f"{TORRENT_API}/piratebay/", 'result_str': RESULT_STR_PIRATEBAY},
-    'tgx': {'source': f"{TORRENT_API}/tgx/", 'result_str': RESULT_STR_TGX},
-    'yts': {'source': f"{TORRENT_API}/yts/", 'result_str': RESULT_STR_YTS},
-    'eztv': {'source': f"{TORRENT_API}/eztv/", 'result_str': RESULT_STR_EZTV},
-    'torlock': {'source': f"{TORRENT_API}/torlock/", 'result_str': RESULT_STR_TORLOCK},
-    'rarbg': {'source': f"{TORRENT_API}/rarbg/", 'result_str': RESULT_STR_RARBG},
-    'ts': {'source': f"{TORRENT_API}/all/", 'result_str': RESULT_STR_ALL}
+    '1337x_ds': {'source': f"{TORRENT_API}/1337x/", 'result_str': RESULT_STR_1337},
+    'piratebay_ds': {'source': f"{TORRENT_API}/piratebay/", 'result_str': RESULT_STR_PIRATEBAY},
+    'tgx_ds': {'source': f"{TORRENT_API}/tgx/", 'result_str': RESULT_STR_TGX},
+    'yts_ds': {'source': f"{TORRENT_API}/yts/", 'result_str': RESULT_STR_YTS},
+    'eztv_ds': {'source': f"{TORRENT_API}/eztv/", 'result_str': RESULT_STR_EZTV},
+    'torlock_ds': {'source': f"{TORRENT_API}/torlock/", 'result_str': RESULT_STR_TORLOCK},
+    'rarbg_ds': {'source': f"{TORRENT_API}/rarbg/", 'result_str': RESULT_STR_RARBG},
+    'ts_ds': {'source': f"{TORRENT_API}/all/", 'result_str': RESULT_STR_ALL}
 }
 
 torrent_handlers = [
@@ -335,17 +335,17 @@ torrent_handlers = [
 
 def searchhelp(update, context):
     help_string = '''
-<b>Torrent Search</b>
-• /nyaasi <i>[search query]</i>
-• /sukebei <i>[search query]</i>
-• /1337x <i>[search query]</i>
-• /piratebay <i>[search query]</i>
-• /tgx <i>[search query]</i>
-• /yts <i>[search query]</i>
-• /eztv <i>[search query]</i>
-• /torlock <i>[search query]</i>
-• /rarbg <i>[search query]</i>
-• /ts <i>[search query]</i>
+<b>Torrent Search of DeadSoul</b>
+• /nyaasi_ds <i>[search query]</i>
+• /sukebei_ds <i>[search query]</i>
+• /1337x_ds <i>[search query]</i>
+• /piratebay_ds <i>[search query]</i>
+• /tgx_ds <i>[search query]</i>
+• /yts_ds <i>[search query]</i>
+• /eztv_ds <i>[search query]</i>
+• /torlock_ds <i>[search query]</i>
+• /rarbg_ds <i>[search query]</i>
+• /ts_dS <i>[search query]</i>
 '''
     sendMessage(help_string, context.bot, update)
     
