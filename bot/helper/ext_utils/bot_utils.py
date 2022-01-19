@@ -21,15 +21,15 @@ PAGE_NO = 1
 
 
 class MirrorStatus:
-    STATUS_UPLOADING = "𝕌𝕡𝕝𝕠𝕒𝕕𝕚𝕟𝕘[--⤴️"
-    STATUS_DOWNLOADING = "𝔻𝕠𝕨𝕟𝕝𝕠𝕒𝕕𝕚𝕟𝕘[--⤵️"
-    STATUS_CLONING = "ℂ𝕝𝕠𝕟𝕚𝕟𝕘[--☯️"
-    STATUS_WAITING = "ℚ𝕦𝕖𝕦𝕖𝕕[--📜"
-    STATUS_FAILED = "𝔽𝕒𝕚𝕝𝕖𝕕[--❌ ℂ𝕝𝕖𝕒𝕟𝕚𝕟𝕘 𝔻𝕠𝕨𝕟𝕝𝕠𝕒𝕕[--🔶🔸"
-    STATUS_PAUSE = "ℙ𝕒𝕦𝕤𝕖𝕕[--⏸️"
-    STATUS_ARCHIVING = "𝔸𝕣𝕔𝕙𝕚𝕧𝕚𝕟𝕘[--🧿"
-    STATUS_EXTRACTING = "𝔼𝕩𝕥𝕣𝕒𝕔𝕥𝕚𝕟𝕘[--🗃️"
-    STATUS_SPLITTING = "𝕊𝕡𝕝𝕚𝕥𝕥𝕚𝕟𝕘[--🔛"
+    STATUS_UPLOADING = "𝕌𝕡𝕝𝕠𝕒𝕕𝕚𝕟𝕘 [--⤴️"
+    STATUS_DOWNLOADING = "𝔻𝕠𝕨𝕟𝕝𝕠𝕒𝕕𝕚𝕟𝕘 [--⤵️"
+    STATUS_CLONING = "ℂ𝕝𝕠𝕟𝕚𝕟𝕘 [--☯️"
+    STATUS_WAITING = "ℚ𝕦𝕖𝕦𝕖𝕕 [--📜"
+    STATUS_FAILED = "𝔽𝕒𝕚𝕝𝕖𝕕 [--❌ ℂ𝕝𝕖𝕒𝕟𝕚𝕟𝕘 𝔻𝕠𝕨𝕟𝕝𝕠𝕒𝕕 [--🔶🔸"
+    STATUS_PAUSE = "ℙ𝕒𝕦𝕤𝕖𝕕 [--⏸️"
+    STATUS_ARCHIVING = "𝔸𝕣𝕔𝕙𝕚𝕧𝕚𝕟𝕘 [--🧿"
+    STATUS_EXTRACTING = "𝔼𝕩𝕥𝕣𝕒𝕔𝕥𝕚𝕟𝕘 [--🗃️"
+    STATUS_SPLITTING = "𝕊𝕡𝕝𝕚𝕥𝕥𝕚𝕟𝕘 [--🔛"
 
 
 PROGRESS_MAX_SIZE = 100 // 8
@@ -108,9 +108,9 @@ def get_progress_bar_string(status):
     p = min(max(p, 0), 100)
     cFull = p // 8
     cPart = p % 8 - 1
-    p_str = '■' * cFull
-    p_str += '□' * (12 - cFull)
-    p_str = f"[--{p_str}--]"
+    p_str = '🟢' * cFull
+    p_str += '⚫' * (12 - cFull)
+    p_str = f"[×_0]-{p_str}-[0_×]"
     return p_str
 
 
@@ -141,7 +141,7 @@ def get_readable_message():
                     msg += f"\n<b>├─📤 ᴜᴘʟᴏᴀᴅᴇᴅ :</b> <code>{get_readable_file_size(download.processed_bytes())}</code> of <code>{download.size()}</code>"
                 else:
                     msg += f"\n<b>├─📥 ᴅᴏᴡɴʟᴏᴀᴅᴇᴅ :</b> <code>{get_readable_file_size(download.processed_bytes())}</code> of <code>{download.size()}</code>"
-                msg += f"\n<b>├─📨 ꜱᴘᴇᴇᴅ :</b> <code>{download.speed()}</code> <b>ETA:</b> <code>{download.eta()}</code>"
+                msg += f"\n<b>├─⚡ ꜱᴘᴇᴇᴅ :</b> <code>{download.speed()}</code> <b>ETA:</b> <code>{download.eta()}</code>"
                 try:
                     msg += f"\n<b>├─↗️ ꜱᴇᴇᴅᴇʀꜱ :</b> <code>{download.aria_download().num_seeders}</code>" \
                            f" | <b>↙️ ᴘᴇᴇʀꜱ :</b> <code>{download.aria_download().connections}</code>"
