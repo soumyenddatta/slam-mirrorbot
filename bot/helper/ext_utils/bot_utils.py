@@ -110,7 +110,7 @@ def get_progress_bar_string(status):
     cPart = p % 8 - 1
     p_str = '🔶' * cFull
     p_str += '🔷' * (12 - cFull)
-    p_str = f"[^-{p_str}-^]"
+    p_str = f"[-{p_str}-]"
     return p_str
 
 
