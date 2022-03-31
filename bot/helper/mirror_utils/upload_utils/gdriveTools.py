@@ -131,7 +131,7 @@ class GoogleDriveHelper:
                                      resumable=False)
         file_metadata = {
             'name': file_name,
-            'description': '💬 𝖀𝖕𝖑𝖔𝖆𝖉𝖊𝖉 𝖇𝖞 𝖚𝖘𝖎𝖓𝖌 𝕯𝖊𝖆𝖉𝕾𝖔𝖚𝖑.',
+            'description': '💬 Uploaded by $$BlackWidow$$. ',
             'mimeType': mime_type,
         }
         if parent_id is not None:
@@ -190,7 +190,7 @@ class GoogleDriveHelper:
         # File body description
         file_metadata = {
             'name': file_name,
-            'description': '💬 𝖀𝖕𝖑𝖔𝖆𝖉𝖊𝖉 𝖇𝖞 𝖚𝖘𝖎𝖓𝖌 𝕯𝖊𝖆𝖉𝕾𝖔𝖚𝖑.',
+            'description': '💬 Uploaded by $$Blackwidow$$. ',
             'mimeType': mime_type,
         }
         try:
@@ -610,8 +610,8 @@ class GoogleDriveHelper:
                     content += f'<b> | <a href="https://telegra.ph/{self.path[nxt_page]}">Next</a></b>'
                     nxt_page += 1
             Telegraph(access_token=telegraph_token).edit_page(path = self.path[prev_page],
-                                 title = '💀 𝕯𝖊𝖆𝖉𝕾𝖔𝖚𝖑 𝕸𝖎𝖗𝖗𝖔𝖗𝖇𝖔𝖙 𝕾𝖊𝖆𝖗𝖈𝖍',
-                                 author_name='💀 𝕯𝖊𝖆𝖉𝕾𝖔𝖚𝖑 𝕸𝖎𝖗𝖗𝖔𝖗𝖇𝖔𝖙',
+                                 title = '💀 $$BlackWidow$$ MirrorBot Search',
+                                 author_name='💀 $$BlackWidow$$ MirrorBot',
                                  author_url='https://github.com/SlamDevs/slam-mirrorbot',
                                  html_content=content)
         return
@@ -807,8 +807,8 @@ class GoogleDriveHelper:
 
         for content in self.telegraph_content :
             self.path.append(Telegraph(access_token=telegraph_token).create_page(
-                                                    title = '💀 𝕯𝖊𝖆𝖉𝕾𝖔𝖚𝖑 𝕸𝖎𝖗𝖗𝖔𝖗𝖇𝖔𝖙 𝕾𝖊𝖆𝖗𝖈𝖍',
-                                                    author_name='💀 𝕯𝖊𝖆𝖉𝕾𝖔𝖚𝖑 𝕸𝖎𝖗𝖗𝖔𝖗𝖇𝖔𝖙',
+                                                    title = '💀 $$BlackWidow$$ MirrorBot Search',
+                                                    author_name='💀 $$BlackWidow$$ MirrorBot',
                                                     author_url='https://github.com/SlamDevs/slam-mirrorbot',
                                                     html_content=content
                                                     )['path'])
